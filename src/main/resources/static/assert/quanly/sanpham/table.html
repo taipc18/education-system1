@@ -1,0 +1,64 @@
+<main id="main" class="main">
+	<!-- Top Selling -->
+	<div class="col-12">
+		<div class="card top-selling overflow-auto">
+			<div class="card-body pb-0">
+				<h5 class="card-title">Sản Phẩm</h5>
+				<div class="row">
+				<div class="form-group col-sm-2">
+							</div>
+					<div class="form-group col-sm-6">
+						<input type="text" name="search" class="form-control"
+							ng-model="search" placeholder="search">
+					</div>
+					<div class="form-group col-sm-3">
+							</div>
+					<div class="form-group col-sm-1">
+						<button type="button" ng-click="reset()" class="btn btn-success"
+							data-toggle="modal" data-target="#exampleModal2">
+							<i class="fas fa-plus"></i>
+						</button>
+					</div>
+				</div>
+				<table class="table table-borderless" style="table-layout: fixed;">
+					<thead>
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">Name</th>
+							<th scope="col">Quantity</th>
+							<th scope="col">Price</th>
+							<th scope="col">Date</th>
+							<th scope="col">Image</th>
+							<th scope="col">Category</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="item in items | filter: search | orderBy: sortProperty
+							| startFrom: currentPage*pageSize | limitTo: pageSize">
+							<td class="text-truncate">{{item.id}}</td>
+							<td class="text-truncate">{{item.name}}</td>
+							<td class="text-truncate">{{item.quantity}}</td>
+							<td class="text-truncate">{{item.price | currency:'':0}}</td>
+							<td class="text-truncate">{{item.createDate |
+								date:'dd-MM-yyyy'}}</td>
+							<td class="text-truncate">{{item.image}}</td>
+							<td class="text-truncate">{{item.category.name}}</td>
+							<td>
+								<button type="button" ng-click="edit(item)"
+									class="btn btn-primary" data-toggle="modal"
+									data-target="#exampleModal">Edit</button>
+								<button ng-click="delete(item)" class="btn btn-danger">Del</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="card-footer text-center">
+					<button ng-disabled = "currentPage == 0" ng-click="currentPage = currentPage-1" class="btn btn-primary"><</button>
+					<button ng-disabled = "currentPage >= items.length/pageSize -1" ng-click="currentPage = currentPage+1" class="btn btn-primary">></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Top Selling -->
+</main>
+<!-- End #main -->

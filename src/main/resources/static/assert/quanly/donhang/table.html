@@ -1,0 +1,99 @@
+<!-- <main id="main" class="main">
+ Top Selling
+            <div class="col-12">
+              <div class="card top-selling overflow-auto">
+                <div class="card-body pb-0">
+                  <h5 class="card-title">Đơn Hàng</h5>
+                  	<select ng-model="pager.searchOrders.$" ng-change="pager.sortStatus" class="form-control col-sm-3">
+						<option ng-repeat="s in sta" ng-value="s.id">{{s.status}}</option>
+					</select>
+
+                  <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Purchaser</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Create Date</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      	<tr ng-repeat="order in pager.items | filter: pager.searchOrders | filter:searchOrders" >
+							<td class="text-truncate">{{order.id}}</td>
+							<td class="text-truncate">{{order.account.fullname}}</td>
+							<td class="text-truncate">{{order.account.email}}</td>
+							<td class="text-truncate">{{order.address}}</td>
+							<td class="text-truncate">{{order.createDate}}</td>
+							<td class="text-truncate">{{order.status}}</td>
+							<td><button type="button" ng-click="edit(order)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">edit</button>
+			 			</tr>
+                    </tbody>
+                  </table>
+					<div class="card-footer text-center">
+					<button ng-click="pager.prev()" class="btn btn-primary"><</button>
+					<button ng-click="pager.next()" class="btn btn-primary">></button>
+				</div>
+                </div>
+
+              </div>
+            </div>End Top Selling
+  </main>End #main	 -->
+  
+  <main id="main" class="main">
+	<!-- Top Selling -->
+	<div class="col-12">
+		<div class="card top-selling overflow-auto">
+			<div class="card-body pb-0">
+				<h5 class="card-title">Đơn Hàng</h5>
+				<div class="row">
+				<div class="form-group col-sm-3">
+				<select ng-model="pager.searchOrders.$" ng-change="pager.sortStatus"
+					class="form-control col-sm-3">
+					<option ng-repeat="s in sta" ng-value="s.id">{{s.status}}</option>
+				</select>
+				</div>
+				<div class="form-group col-sm-6">
+					<input type="text" name="search" class="form-control" id="formGroupExampleInput" ng-model="searchOrders.$"
+						placeholder="search">
+				</div>
+				</div>
+				<table class="table table-borderless">
+					<thead>
+						<tr>
+							<th scope="col">STT</th>
+							<th scope="col">Purchaser</th>
+							<th scope="col">Email</th>
+							<th scope="col">Address</th>
+							<th scope="col">Create Date</th>
+							<th scope="col">Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr
+							ng-repeat="order in pager.items | filter: pager.searchOrders | filter:searchOrders">
+							<td class="text-truncate">{{order.id}}</td>
+							<td class="text-truncate">{{order.account.fullname}}</td>
+							<td class="text-truncate">{{order.account.email}}</td>
+							<td class="text-truncate">{{order.address}}</td>
+							<td class="text-truncate">{{order.createDate}}</td>
+							<td class="text-truncate">{{order.status}}</td>
+							<td><button type="button" ng-click="edit(order)"
+									class="btn btn-primary" data-toggle="modal"
+									data-target="#exampleModal">edit</button></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="card-footer text-center">
+					<button ng-click="pager.prev()" class="btn btn-primary"><</button>
+					<button ng-click="pager.next()" class="btn btn-primary">></button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- End Top Selling -->
+</main>
+<!-- End #main -->
+  

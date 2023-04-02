@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index::dynamic(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<main>
+		<div class="form-title">Change Password</div>
+        <h5 style="font-weight: 600;">Tài khoản: [[${#request.remoteUser}]]</h5>
+        <div class="form">
+            <form th:action="@{/baomat/quenmatkhau/form}" th:object="${userRequest}" id="form" method="POST">
+                <div th:if="${message != null}" class="m-3">
+                <p class="text-danger">[[${message}]]</p>
+            </div>
+                <p class="content-item">
+                    <label>Mật khẩu hiện tại
+                        <input type="password" name="oldPassword" id="oldPassword" placeholder="password" required>
+                    </label>
+                </p>
+                <p class="content-item">
+                    <label> Mật khẩu mới
+                        <input type="password" name="newPassword" id="newPassword" placeholder="password" required>
+                    </label>
+                </p>
+                <p class="content-item">
+                    <label>Nhập lại mật khẩu
+                        <input type="password" id="password" name="password" placeholder="password" required>
+                    </label>
+                </p>
+                <button type="submit"  class="signup">Đổi mật khẩu </button>
+                <button type="submit"  class="exit btn-danger">Exit </button>
+            </form>
+        </div>
+	</main>
+</body>
+</html>

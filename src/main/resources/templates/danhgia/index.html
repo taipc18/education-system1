@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index::dynamic(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main>
+	<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+		<div class="danhgia-web">
+			<form>
+				<div class="row-danhgia" >
+					<label for="fname" class="danhgia-ff" id="username">[[${#request.remoteUser}]]</label>
+					
+				</div>
+				<br>
+				<br>
+				<div class="row-danhgia" >										
+					
+				<br>
+				<br>					
+					<input ng-model="review.review" id="subject" name="subject"
+						class="comment-viet" type="text" placeholder="Viết bình luận...">
+				</div>
+				<button class="huy" ng-click="validateReview()">Update</button>
+				<button class="binh-luan" ng-click="review.reset()">Delete</button>
+
+				<div class=" danhgiaform" ng-repeat="review in pagerReviews.listReviews">
+					<div class="bg-white p-2">
+						<div class="d-flex flex-row user-info"><img class="rounded-circle" src="https://i.pinimg.com/564x/ac/2e/fa/ac2efa286d280be353bbb46c27275426.jpg" width="40">
+							<div class="d-flex flex-column justify-content-start ml-2" id="xarachut">                                                  
+								<span class="d-block font-weight-bold name">{{review.account.username}}</span><br>
+								<span class="date text-black-50" >{{review.createDate | date:'dd-MM-yyyy'}}</span>
+							</div>
+						</div>
+						<div class="mt-2">
+							<p class="comment-text" >{{review.review}}</p>
+						</div>
+					</div>
+					<br>
+					<div class="bg-white">
+						<div class="d-flex flex-row fs-12" id="xalainhau">
+							<div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div>
+							<div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1">Comment</span></div>
+							<div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+						</div>
+					</div>
+				  </div>
+				  <div class="rpd">
+					<i class='bx bx-chevron-left'ng-click="pagerReviews.prev()" ></i>
+					<i class='bx bx-chevron-right' ng-click="pagerReviews.next()"></i>
+				</div>
+			</form>
+		</div>
+
+	</main>
+	<script>
+		
+	  </script>
+</body>
+</html>

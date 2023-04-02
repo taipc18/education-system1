@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index::dynamic(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main>
+	<br>
+	<br>
+	<br>
+	<br>
+
+    	<section id="product">
+			<div id="main">
+				<div class="inner">
+					<div id="container05" class="style-lg container default full">
+						<div class="inner-wrapper">
+							<div class="inner">
+								<div id="innered-lg">
+									<div class="inner-sale">
+										<button>
+											<a href="">Products</a>
+										</button>
+										<div class="S-N">
+											<a th:each="c:${cates}"
+												th:href="@{|/sanpham/trangchu/loai?cid=${c.id}|}">[[${c.name}]]</a>
+										</div>
+									</div>
+									<div class="card-sliderop">
+										<div class="card-sliderop2">
+											<div class="cardered" th:each="p : ${items}">
+												<a th:href="@{|/sanpham/chitiet/${p.id}|}"> 
+													<img th:src="@{|../../../assert/productimg/${p.image}|}" alt="" class="card-img" onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'">
+												</a>
+												<div class="card-content">
+													<h2 class="name" th:utext="${p.name}"></h2>
+													<p class="description" th:utext="${p.describe1}"></p>
+													<div class="tulodc">
+														<span class="pice-lg">[[${p.price}]] VNĐ </span>
+														<button class="btn-31" th:attr="ng-click=@{|cart.add(${p.id})|}">
+															<span class="text-container"> <span class="text">Mua</span>
+															</span>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

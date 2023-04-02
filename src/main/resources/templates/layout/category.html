@@ -1,0 +1,10 @@
+<div xmlns:th="http://www.thymeleaf.org">
+	<div class="list-group">
+	  <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+	    <i class="fa-solid fa-bucket"></i> Danh muc
+	  </button>
+	  <a th:each="c:${cates}" th:href="@{|/sanpham/trangchu?cid=${c.id}|}">
+	  	<button type="button" class="list-group-item list-group-item-action">[[${c.name}]]</button>
+	  </a>
+	</div>
+</div>

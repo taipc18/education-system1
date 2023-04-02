@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index::dynamic(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<body>
+    <main>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+		<!-- DanhSachDonHang -->
+		<div class="details">
+			<!-- order datails list   -->
+		  <div class="recentOrders">
+			  <div class="cardHeader">
+				  <h2>Danh Sách Đặt Hàng</h2>
+			  </div>
+			  <table>
+				  <thead>
+					  <tr class="bodered">
+						  <td>Order Date </td>
+						  <td>Shipping Address</td>
+						  <td> </td>
+					  </tr>
+				  </thead>
+				  <tbody>
+					  <tr th:each="order, state:${listOrders}">
+        				<td>[[${order.createDate}]]</td>
+        				<td>[[${order.address}]]</td>
+        				<td class="hover-chitiet">
+							<a th:href="@{|/dathang/chitiet/${order.id}|}">chitiet</a>
+						</td>
+        			</tr>
+				  </tbody>   
+			  </table>
+		  </div>
+
+		  
+	  </div>
+    </main>
+</body>
+</html>

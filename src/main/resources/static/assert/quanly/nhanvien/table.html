@@ -1,0 +1,38 @@
+<main id="main" class="main">
+ <!-- Top Selling -->
+            <div class="col-12">
+              <div class="card top-selling overflow-auto">
+                <div class="card-body pb-0">
+                  <h5 class="card-title">Nhân Viên</h5>
+
+                  <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th scope="col">Fullname</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone Number</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      	<tr ng-repeat="admin in admins">
+							<td class="text-truncate">{{admin.fullname}}</td>
+							<td class="text-truncate">{{admin.username}}</td>
+							<td class="text-truncate">{{admin.email}}</td>
+							<td class="text-truncate">{{admin.password}}</td>
+							<td class="text-truncate">{{admin.phone}}</td>
+							<td>
+								<button type="button" ng-click="edit(admin)"
+									class="btn btn-primary" data-toggle="modal"
+									data-target="#exampleModal">Edit</button>
+							</td>
+						</tr>
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div><!-- End Top Selling -->
+  </main><!-- End #main -->

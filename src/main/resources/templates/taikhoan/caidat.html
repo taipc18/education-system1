@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index::dynamic(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main>
+	<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    	<div class="tongquat-profile">
+			<!-- <div class="title-profile">
+				<h2>Profile</h2>
+			</div>
+				<div>
+					<span>Full Name</span>
+					<input ng-model="thongtin.fullname" class="form-control">
+				</div>
+				<div>
+					<span>Email</span>
+					<input ng-model="thongtin.email" class="form-control">
+				</div>
+				<div>
+					<span>Phone</span>
+					<input ng-model="thongtin.phone" class="form-control">
+				</div>
+			<div>
+				<button ng-click="update()">Update</button>
+			</div> -->
+
+<div class="tongquat-profile2">
+	<div class="title-profile">
+		<h2>Profile</h2>
+	</div>
+	<div class="profile-div">
+		<label for="fname">Full Name</label>
+		<input type="text" id="fullname"  ng-model="thongtin.fullname">			
+	</div>
+	<div class="profile-div">
+		<label for="lname">Email</label>
+		<input type="text" id="email"  ng-model="thongtin.email" readonly>
+	</div>
+	<div class="profile-div">
+		<label for="lname">Phone</label>
+		<input type="text" id="phonenumber"  ng-model="thongtin.phone">
+	</div>
+
+	<input type="submit" value="Submit" ng-click="validateUpdate()">
+ 
+</div>
+			
+				
+			
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<script type="text/javascript">
+		
+		
+		//--------------------------------- đừng đụng vào cái này --------------------------
+			const app = angular.module("cityzenApp",[]);
+			app.controller("cityzenCtrl", function($scope, $http){
+				
+				$scope.thongtin = {};
+				
+				$scope.initializeUser = function(){
+					var ten = document.getElementById('username').innerText;
+					console.log(ten);
+					let url = "http://localhost:8080/rest/accounts/"+ten;
+					console.log(url);
+					$http.get(url).then(resp => {
+						$scope.thongtin = resp.data;
+						console.log($scope.thongtin);
+					});
+				}
+				
+				$scope.initializeUser();
+				
+				$scope.validateUpdate=function(){
+					let fullname =document.getElementById('fullname').value;
+					let email =document.getElementById('email').value;
+					let phonenumber =document.getElementById('phonenumber').value;
+					var patternemail =/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+					var patternpassword =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+					var patternphonenumber=/(84|0[3|5|7|8|9])+([0-9]{8})\b/;
+					var testemail = patternemail.test(email);
+					var testphonenumber = patternphonenumber.test(phonenumber);
+					if(fullname.length===0){
+						Swal.fire({
+							toast:true,
+							position: 'bottom-end',
+							icon: 'error',
+							title: 'Không được để trống tên nhân viên',
+							showConfirmButton: false,
+							timer: 2500
+						  })			
+						return false;
+					}
+					
+					if(email.length===0){
+						Swal.fire({
+							toast:true,
+							position: 'bottom-end',
+							icon: 'error',
+							title: 'Không được để trống email',
+							showConfirmButton: false,
+							timer: 2500
+						  })			
+						return false;
+					}
+					
+					if(!testemail){
+						Swal.fire({
+							toast:true,
+							position: 'bottom-end',
+							icon: 'error',
+							title: 'Định dạng email không hợp lệ ',
+							showConfirmButton: false,
+							timer: 2500
+						  })			
+						return false;
+					}
+					
+					
+					if(!testphonenumber){
+						Swal.fire({
+							toast:true,
+							position: 'bottom-end',
+							icon: 'error',
+							title: 'Định dạng số điện thoại không hợp lệ ',
+							showConfirmButton: false,
+							timer: 2500
+						  })			
+						return false;
+					}
+					
+					else{
+						$scope.update();
+					}
+				}
+				
+				$scope.update = function(){
+					var user = angular.copy($scope.thongtin);
+					$http.put(`/rest/accounts/${user.username}`, user).then(resp => {
+						const Toast = Swal.mixin({
+							toast: true,
+							position: 'bottom-end',
+							showConfirmButton: false,
+							timer: 2000,
+							timerProgressBar: true,
+							didOpen: (toast) => {
+								toast.addEventListener('mouseenter', Swal.stopTimer)
+								toast.addEventListener('mouseleave', Swal.resumeTimer)
+							},
+							didClose: (toast)=>{
+								console.log(resp.data);
+								location.href = "/sanpham/trangchu";
+							}
+						})
+						Toast.fire({
+							icon: 'success',
+							title: 'Update successfully'
+						})
+						
+					}).catch(error => {
+						const Toast = Swal.mixin({
+							toast: true,
+							position: 'bottom-end',
+							showConfirmButton: false,
+							timer: 2000,
+							timerProgressBar: true,
+							didOpen: (toast) => {
+								toast.addEventListener('mouseenter', Swal.stopTimer)
+								toast.addEventListener('mouseleave', Swal.resumeTimer)
+							}
+						})
+						Toast.fire({
+							icon: 'error',
+							title: 'Update Failed'
+						})
+						console.log("Error: ", error);
+					})
+				}
+			});
+		</script>
+    </main>
+</body>
+</html>

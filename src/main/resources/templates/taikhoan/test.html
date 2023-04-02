@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<title>Insert title here</title>
+</head>
+<body ng-app="cityzenApp" ng-controller="cityzenCtrl">
+
+
+	<div ng-repeat="item in pager.list | filter:search" class="col-sm-3">
+		<div class="card card-primary poly-item text-center" id="cart-body">
+			<div class="hover-rotate">
+				<a href="/sanpham/chitiet/{{item.id}}"> <b>{{item.image}}</b>
+				</a>
+				<div class="card-title">{{item.name}}</div>
+				<b class="pull-left">{{item.price}} VNĐ</b> <br>
+				<button ng-click="cart.add(item.id)">Mua</button>
+				<button ng-click="favorite.add(item.id)">Them vao yeu thich</button>
+			</div>
+		</div>
+	</div>
+	
+
+
+	<table>
+	  <tbody>
+		  <tr th:each="p : ${list}">
+		  	<td th:utext="${p.product.id}"></td>
+   			<td th:utext="${p.product.name}"></td>
+		  </tr>		
+	  </tbody>   
+  	</table>
+  
+  
+</body>
+<script src="../../../assert/js/cityzen.js"></script>
+</html>

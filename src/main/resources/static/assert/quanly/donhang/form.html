@@ -1,0 +1,96 @@
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Order status</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+			</div>
+			<div class="modal-body">
+				<div class="card-heading">Order Information</div>
+				<hr>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<div>ID</div>
+								<input ng-model="form.id" class="form-control" readonly>
+							</div>
+							<div class="form-group col-sm-6">
+								<div>Fullname</div>
+								<input ng-model="form.account.fullname" class="form-control" readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<div>Address</div>
+								<input id="address" ng-model="form.address" class="form-control">
+							</div>
+							<div class="form-group col-sm-6">
+								<div>Phone number</div>
+								<input ng-model="form.account.phone" class="form-control" readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<div>Email</div>
+								<input ng-model="form.account.email" class="form-control" readonly>
+							</div>
+							<div class="form-group col-sm-6">
+								<div>Order date</div>
+								<input ng-model="form.createDate" class="form-control" readonly>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-3">
+							</div>
+							<div class="form-group col-sm-6">
+								<div>Order status</div>
+								<select ng-model="form.status" class="form-control" id="exampleFormControlSelect1">
+									<option ng-repeat="s in sta" ng-value="s.id">{{s.status}}</option>
+								</select>
+							</div>
+						</div>
+						<br>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<button ng-click="validateUpdate()" type="button" class="btn btn-primary">Save
+						changes</button>
+				</div>
+				<main>
+				<div class="card-heading">Order Lines</div>
+				<hr>
+				<table class="table" id="table">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Amount</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="od in ods">
+							<td>{{od.id}}</td>
+							<td>{{od.product.name}}</td>
+							<td>{{od.price}}</td>
+							<td>{{od.quantity}}</td>
+							<td>{{od.quantity*od.price}}</td>
+						</tr>
+					</tbody>
+				</table>
+				<span id="tongtien"></span>
+			</main>
+			</div>
+		</div>
+	</div>
+</div>

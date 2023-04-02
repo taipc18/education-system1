@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index::dynamic(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<body>
+    <main th:object="${itemNews}" class="poly-item-detail">
+    	<br><br><br><br><br><br><br><br>
+    	
+    	
+    <div class="tintuc">
+    <div class="tintuc-title">
+      <h1>TIN TỨC</h1>
+    </div>
+    <hr>
+    <div class="tintuc-title2">
+     <div>
+      <h2 th:text="*{name}"></h2>
+     </div>
+     <br>
+      <div class="tintuc-date">
+        <span th:text="*{writer}"></span>
+        <p th:text="*{createDate}"></p>
+       
+      </div>
+       <br>
+    </div>
+    
+    <div class="tintuc-img">
+      <img th:src="@{|../../../assert/productimg/*{image}|}" onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'" />
+      <span class="title-tintuc001" th:text="*{opening}"></span>
+    </div>
+    <br>
+     <div class="wrapper-title">
+                        <div class="sec" id="sec">
+                            <p class="title-tintuc001" th:text="*{body1}"></p>
+                            <p class="title-tintuc001" th:text="*{body2}"></p>
+                            <p class="title-tintuc001" th:text="*{ending}"></p>
+                        </div>
+                       </div>
+  </div>
+  
+  
+  
+    	<!-- <span><p th:text="*{name}"></p></span>	
+    	<span><p th:text="*{image}"></p></span>	
+    	<span><p th:text="*{description}"></p></span>	
+    	<span><p th:text="*{opening}"></p></span>	
+    	<span><p th:text="*{body1}"></p></span>
+    	<span><p th:text="*{body2}"></p></span>
+    	<span><p th:text="*{ending}"></p></span>  -->
+    </main>
+</body>
+</html>

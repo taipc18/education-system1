@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index::dynamic(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- MAIN CSS -->
+
+<!-- GOOLGE FONT  -->
+<link href="https://fonts.googleapis.com/css?display=swap&family=Inter:400,400italic%7CBai+Jamjuree:400,400italic"
+    rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<main>
+	<!--  <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    	<div>
+			<div>Nhap mat khau vao ddcmm</div>
+			<br>
+			<input ng-model="thongtin.matkhausosanh">
+			<div>
+				<button ng-click="xacthuc()">Xac thuc</button>
+			</div>
+		</div>  -->
+		 <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+	<div class="container_xthuc"> 
+		<div class="main_xthuc"> 
+			<div class="title_xthuc">
+				<h2>Nhập Lại PassWord Của Bạn</h2>
+			</div>
+			<div class="input_xthuc">
+				<input class="w3-input" ng-model="thongtin.matkhausosanh" 
+					   type="password" id="password"><i class='bx bx-show-alt' id="show"></i>
+				<button class="btn_xthuc" ng-click="xacthuc()"> <a>Xác Nhận</a> </button>
+			</div>
+			
+		</div>	
+	</div>	
+		<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+<script type="text/javascript">
+//-----------------------------------------------------------
+	const app = angular.module("cityzenApp",[]);
+	app.controller("cityzenCtrl", function($scope, $http){
+		
+		$scope.xacthucmatkhau = function(){
+			var ten = document.getElementById('username').innerText;
+			$scope.ten = ten;
+			console.log(ten);
+			let url = "http://localhost:8080/rest/accounts/"+ ten;
+			console.log(url);
+			$http.get(url).then(resp => {
+				$scope.matkhau = resp.data.password;
+			});
+		}
+		
+		$scope.xacthucmatkhau();
+		
+		
+		$scope.xacthuc = function(){
+			var user = angular.copy($scope.thongtin);
+			if($scope.matkhau == user.matkhausosanh){
+				location.href = "/taikhoan/doi/" + $scope.ten;
+			}else{
+				const Toast = Swal.mixin({
+					toast: true,
+					position: 'bottom-end',
+					showConfirmButton: false,
+					timer: 2000,
+					timerProgressBar: true,
+					didOpen: (toast) => {
+						toast.addEventListener('mouseenter', Swal.stopTimer)
+						toast.addEventListener('mouseleave', Swal.resumeTimer)
+					},
+					didClose:(toast)=>{
+						location.reload();
+					}
+				})
+				Toast.fire({
+					icon: 'error',
+					title: 'Mật khẩu không chính xác'
+				})
+			}
+			
+		}
+	});
+
+	document.getElementById('show').onclick = function(){
+		let password = document.getElementById('password');
+		password.type = password.type == 'password' ? 'text' : 'password';
+	}
+
+</script>
+	 <!-- MAIN JS --> 
+	 
+</main>
+</body>
+</html>

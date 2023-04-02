@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/index::dynamic(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main>
+		<br> <br> <br> <br> <br> <br> <br>
+		<!-- 	<div>SHOPPING CART</div>
+        <div th:fragment="shopping_cart">
+        	
+        	<table class="table">
+        		<thead>
+        			<tr>
+        				<th>ID</th>
+        				<th>Name</th>
+        				<th>Price</th>
+        				<th>Quantity</th>
+        				<th>Amount</th>
+        				<th></th>
+        			</tr>
+        		</thead>
+        		<tbody>
+        			<tr ng-repeat="item in cart.items">
+        				<td>{{item.id}}</td>
+        				<td>{{item.name}}</td>
+        				<td>{{item.price|number:2}}</td>
+        				<td><input ng-change="cart.saveToLocalStorage()" ng-model="item.qty" type="number" min="1"></td>
+        				<td>{{item.qty*item.price|number:2}}</td>
+        				<td>
+        					<button ng-click="cart.remove(item.id)">Delete</button>
+        				</td>
+        			</tr>
+        			<tr>
+        				<th>Tong tien: ${{cart.amount | number:2}}</th>
+        			</tr>
+        		</tbody>
+        	</table>
+        	<div>
+        		<button ng-click="cart.clear()">Clear all</button>
+        		<a th:href="@{/dathang/checkout}">Checkout</a>
+        	</div>
+        </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<div class="wrapper-shope" th:fragment="shopping_cart">
+			<h1>Shopping Cart</h1>
+			<div ng-hide="!cart.items.length">
+				<button class="shope" ng-click="cart.clear()" id="do">
+					<i class="fa fa-trash"></i>
+				</button>
+				<a ng-click="kiemloi()">
+					<button class="shope" id="xanh">
+						<i class="fa fa-shopping-cart"></i>
+					</button>
+				</a>
+			</div>
+			<div ng-hide="cart.items.length">
+				<img ng-src="../../../assert/productimg/giohang.png" alt=""
+					style="width: 780px" class="card-img"
+					onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'">
+			</div>
+			<br> <br>
+			<div class="project">
+				<div class="shop">
+
+					<div class="box" ng-repeat="item in cart.items">
+						<img ng-src="../../../assert/productimg/{{item.image}}"
+							onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'">
+						<div class="content">
+							<p class="name-box" id="name-boxbox">{{item.name}}</p>
+							<p class="name-box" style="display: none;" id="soluonghang">{{item.quantity}}</p>
+							<input name="productName" value="{{item.id}}"
+								style="display: none">
+							<p class="name-box">Price: {{item.price | currency:'':0}}</p>
+							<input name="productPrice" value="{{item.price}}"
+								style="display: none">
+							<p class="unit">
+								Quantity: <input name="" value="2" id="soluongdat"
+									ng-change="cart.saveToLocalStorage()" ng-model="item.qty"
+									type="number" min="1" max="{{item.quantity}}" >
+							</p>
+							<input name="productQuantity" value="{{item.qty}}"
+								style="display: none">
+							<p class="btn-area" ng-click="cart.remove(item.id)">
+								<i aria-hidden="true" class="fa fa-trash"></i> <br> <br>
+							<p class="tatal">Total: {{item.qty*item.price| currency:'':0}}</p>
+							
+						</div>
+					</div>
+
+				</div>
+				<!--  <div class="right-bar" >
+				<p><span>Subtotal:</span> <span>$120</span></p>
+				<hr>
+				<p><span>Tax (5%):</span> <span>$6</span></p>
+				<hr>
+				<p><span>Shipping:</span> <span>$15</span></p>
+				<hr>
+				<p><span>Total:</span> <span>$141</span></p><a href="#"><i class="fa fa-shopping-cart"></i>Checkout</a>
+			</div> -->
+			</div>
+		</div>
+
+		<br> <br> <br> <br> <br> <br> <br>
+
+
+		<!-- 	 <div class="card-heading">SHOPPING CART</div>
+        <div class="card card-primary" th:fragment="shopping_cart">
+        	
+        	<table class="table">
+        		<thead>
+        			<tr>
+        				<th>ID</th>
+        				<th>Name</th>
+        				<th>Price</th>
+        				<th>Quantity</th>
+        				<th>Amount</th>
+        				<th></th>
+        			</tr>
+        		</thead>
+        		<tbody>
+        			<tr ng-repeat="item in cart.items">
+        				<td>{{item.id}}</td>
+        				<td>{{item.name}}</td>
+        				<td>{{item.price|number:2}}</td>
+        				<td><input ng-change="cart.saveToLocalStorage()" ng-model="item.qty" type="number" min="1"></td>
+        				<td>{{item.qty*item.price|number:2}}</td>
+        				<td>
+        					<button ng-click="cart.remove(item.id)" class="btn btn-danger">
+        						<i class="fa-solid fa-trash-can"></i>
+        					</button>
+        				</td>
+        			</tr>
+        			<tr>
+        				<th>Tong tien: ${{cart.amount | number:2}}</th>
+        			</tr>
+        		</tbody>
+        	</table>
+        	<div class="card-footer">
+        		<button ng-click="cart.clear()" class="btn btn-danger">
+        			<i class="fa-solid fa-trash-can"></i> Clear
+        		</button>
+        		<a th:href="@{/dathang/checkout}" class="btn btn-primary">
+        			<i class="fa-solid fa-basket-shopping"></i> Checkout
+        		</a>
+        	</div>
+        </div>  -->
+	</main>
+</body>
+</html>

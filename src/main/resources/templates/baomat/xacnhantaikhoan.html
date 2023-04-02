@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+<link rel="stylesheet" href="../../../../assert/css/Login.css">
+<title>Insert title here</title>
+</head>
+<body>
+	<main>
+		<!-- <br> <br> <br> <br> <br> <br> <br>
+		<div class="form-title">xác nhận tài khoản</div>
+		<div class="form">
+			<div style="margin: 10px; text-align: center"
+				th:if="${message != null}">
+				<p class="text-warning">[[${message}]]</p>
+			</div>
+			<form th:action="@{/baomat/xacnhantaikhoan}" method="post">
+				<p>
+					Vui lòng điền vào biểu mẫu này để xác nhận hoặc<a
+						th:href="@{/j6/login}">Đăng nhập</a>
+				</p>
+				<label for="verify-code">Mã xác nhận</label> <input type="text"
+					placeholder="Mã xác nhận" name="cf-signup" required />
+
+				<div class="buttons">
+					<button type="button" class="cancelbtn">Huỷ</button>
+					<button type="submit" class="signupbtn">Gửi</button>
+					<h4 th:text="${message}"></h4>
+				</div>
+			</form>
+		</div> -->
+		
+		<form th:action="@{/baomat/xacnhantaikhoan}" method="post">
+			<div class="loginContainer">
+		        <div class="logo">
+		            <img src="../../../assert/images/flogo.png">
+		        </div>
+		        <div class="form">
+		            <div class="group">
+		                <h1>Xác nhận tài khoản</h1>
+		            </div>
+		            <div style="margin: 10px; text-align: center"
+						th:if="${message != null}">
+						<p class="text-warning">[[${message}]]</p>
+					</div>
+		            <div class="group">
+		                <i class="fa-regular fa-user"></i>
+		                <input type="text" placeholder=" " id="name" autocomplete="off" name="cf-signup" required>
+		                <label for="name">Mã kích hoạt</label>
+		            </div>
+		            <br>
+		            Vui lòng điền vào biểu mẫu này để xác nhận hoặc<a th:href="@{/baomat/login/form}">Đăng nhập</a>
+		            <div class="loginBtn">
+		                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+		            </div>   
+		        </div>
+		    </div>
+		</form>
+	    	
+	    <script>
+	        function changeTypePassword(){
+	            document.getElementById('password').type = document.getElementById('password').type == 'text' ? 'password' : 'text';
+	        }
+	    </script>  
+	</main>
+</body>
+</html>

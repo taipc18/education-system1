@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+      body {
+        text-align: center;
+        padding: 40px 0;
+        background: #EBF0F5;
+      }
+        h1 {
+          color: #88B04B;
+          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+          font-weight: 900;
+          font-size: 40px;
+          margin-bottom: 10px;
+        }
+        p {
+          color: #404F5E;
+          font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+          font-size:20px;
+          margin: 0;
+        }
+      .checkmark{
+        color: #9ABC66;
+        font-size: 100px;
+        line-height: 200px;
+        margin-left:-15px;
+      }
+      .card {
+        background: white;
+        padding: 60px;
+        border-radius: 4px;
+        box-shadow: 0 2px 3px #C8D0D8;
+        display: inline-block;
+        margin: 0 auto;
+      }
+    </style>
+<body ng-app="cityzenApp" ng-controller="cityzenCtrl">
+	<div class="container" th:object="${transaction}">
+	  <div class="card">
+	  <i class="checkmark">✓</i>
+	  <h1>Success</h1> 
+      <p>We received your purchase request;<br/> we'll be in touch shortly!</p>
+      <br>
+	<div class="card-header">
+	Date: 
+	<strong th:text="*{PayDate}"></strong> 
+	  <span class="float-right"> <strong th:text="*{PayStatus}"></strong></span>
+	
+	</div>
+	<div class="card-body">
+	<div class="row mb-4">
+	<div class="col-sm-6">
+	<h6 class="mb-3">From:</h6>
+	<div>
+	<strong>Cityzen company</strong>
+	</div>
+	<div>Cityzen Staff</div>
+	<div>12 Nguyen Van Qua, Ho Chi Minh city</div>
+	<div>Email: cityzen@gmail.com</div>
+	<div>Phone: +01 234 567 78</div>
+	</div>
+	
+	<div class="col-sm-6">
+	<h6 class="mb-3"></h6>
+	<div>
+	<div>Bank code: <strong th:text="*{BankCode}"></strong></div>
+	</div>
+	<div>TranslationNo: <strong th:text="*{TranslationNo}"></strong></div>
+	<div>Order Id: <strong th:text="*{order.id}"></strong></div>
+	<div>BankTranNo: <strong th:text="*{BankTranNo}"></strong></div>
+	</div>
+	
+	
+	
+	</div>
+	
+	<div class="table-responsive-sm">
+	<div class="col-lg-4 col-sm-5 ml-auto">
+	<table class="table table-clear">
+	<tbody>
+	<tr>
+	<td class="left">
+	<tr>
+	<td class="left">
+	<strong>Total: </strong>
+	</td>
+	<td class="right">
+	<strong th:text="|*{#numbers.formatDecimal(amount, 1, 'POINT', 0, 'COMMA')}|" style="color: red"></strong>
+	</td>
+	</tr>
+	</tbody>
+	</table>
+	</div>
+	<a href="/">Ve trang chu</a>
+	</div>
+	
+	</div>
+	</div>
+	</div>
+</body>
+<script src="../../../assert/js/cityzen.js"></script>
+</html>

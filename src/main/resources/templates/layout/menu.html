@@ -1,0 +1,72 @@
+
+
+<header xmlns:th="http://www.thymeleaf.org" class="w-100">
+        <nav class="navbar">
+            <!-- HEADER   -->
+            <button class="btn-98 animate__animated animate__fadeInDown" >CityZen</button>
+            <!-- HEADER MENU  -->
+            <div class="navbar_menu">
+                <ul class="navbar_ul">
+                    <li class="navbar_li animate__animated animate__fadeInDown"><a th:href="@{/}" class="link">Trang Chủ</a></li>
+                    <th:block th:if="${#request.remoteUser}">
+						<div>
+							<li class="navbar_li animate__animated animate__fadeInDown"><a th:href="@{/dathang/danhsach}" class="link">Lịch Sử</a></li>
+						</div>
+						<div>
+							<li class="navbar_li animate__animated animate__fadeInDown"><a th:href="@{/sanpham/yeuthich}" class="link">Yêu Thích</a></li>
+						</div>
+						<div>
+							<li class="navbar_li animate__animated animate__fadeInDown"><a th:href="@{/danhgia/index}" class="link">Đánh giá</a></li>
+						</div>
+						<div>
+							<li class="navbar_li animate__animated animate__fadeInDown"><a th:if="${#request.isUserInRole('ADMIN') or #request.isUserInRole('STAF')}"
+							th:href="@{/admin}" class="link">Trang quản lý</a></li>
+						</div>
+						<div class="dropdown" th:if="${#request.remoteUser}">				
+							<li class="navbar_li animate__animated animate__fadeInDown">
+							<a>
+								<box-icon class="iconsuer" name='user' type='solid' color='#fefefe' ></box-icon>		
+							<span id="username" class="iconsuer100" ng-model="thongtin.username">[[${#request.remoteUser}]]</span>
+							</a>
+							</li>
+							<div class="dropdown-content" id="menu_dropdown">
+								<a th:href="@{|/taikhoan/caidat/${#request.remoteUser}|}" class="link navbar_li animate__animated animate__fadeInDown">Thay đổi thông tin</a>
+								<a th:href="@{|/taikhoan/doimatkhau/${#request.remoteUser}|}" class="link navbar_li animate__animated animate__fadeInDown" >Đổi mật khẩu</a>
+								<a th:href="@{/baomat/logoff}" class="link navbar_li animate__animated animate__fadeInDown">Đăng xuất</a>
+							</div>
+						  </div>
+					</th:block>
+					<th:block th:unless="${#request.remoteUser}">
+			      		<div>
+							<li class="navbar_li animate__animated animate__fadeInDown"><a th:href="@{/baomat/login/form}" class="link">Đăng nhập</a></li>
+						</div>
+						<div>
+							<li class="navbar_li animate__animated animate__fadeInDown"><a th:href="@{/baomat/signup/form}" class="link">Đăng kí</a></li>
+						</div>
+				    </th:block>
+				 
+
+                </ul>
+            </div>
+         <!--    ICON CARD  -->
+            <div class="navbar_icon">
+                 <a class="shopping-container animate__animated animate__fadeInDown" th:href="@{/giohang/view}">
+                    <div class="counter-container">
+                        <span id="counter">{{cart.count}}</span>
+                        <i class='bx bx-cart'></i>
+                    </div>
+                 </a>
+            </div>
+            
+        </nav>
+    </header>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

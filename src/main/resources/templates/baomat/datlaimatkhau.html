@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+<link rel="stylesheet" href="../../../../assert/css/Login.css"> 
+<title>Insert title here</title>
+</head>
+<body>
+	<main>
+		<!-- <div class="form-title">Đặt lại mật khẩu</div>
+		<h5>Vui lòng kiểm tra mã xác nhận trong email của bạn và nhập đầy
+			đủ các trường để đặt lại mật khẩu tài khoản</h5>
+		<div class="form">
+			<div style="margin: 10px; text-align: center"
+				th:if="${message != null}">
+				<p class="text-warning">[[${message}]]</p>
+			</div>
+			<form th:action="@{/baomat/xacnhanmatkhau}" method="post">
+          <h1>Đặt lại mật khẩu</h1>
+          <p>
+            Vui lòng điền vào biểu mẫu này để đặt lại. hoặc
+            <a th:href="@{/j6/login}">Đăng nhập</a>
+          </p>
+
+          <label for="password">Mật khẩu mới</label>
+          <input type="password" placeholder="Mật khẩu mới" name="new-password" required minlength="5" maxlength="30"/>
+          
+          <label for="new-password">xác nhận mật khẩu mới</label>
+          <input type="password" placeholder="xác nhận khẩu mới" name="cf-new-password" required minlength="5" maxlength="30"/>
+          
+          <label for="verify-code">Mã xác nhận</label>
+          <input type="password" placeholder="Mã xác nhận" name="verify-code" required/>
+          
+          <div class="buttons">
+            <button type="button" class="cancelbtn">Huỷ</button>
+            <button type="submit" class="signupbtn">Gửi</button>
+            <h4 th:text="${message}"></h4>
+          </div>
+        </form>
+		</div> -->
+		
+			<form th:action="@{/baomat/xacnhanmatkhau}" method="post" >
+				<div class="loginContainer">
+			        <div class="logo">
+			            <img src="../../../assert/images/flogo.png">
+			        </div>
+			        <div class="form">
+			            <div class="group">
+			                <h1>Re password</h1>
+			            </div>
+			            Vui lòng điền vào biểu mẫu này để đặt lại hoặc <a th:href="@{/baomat/login/form}">Đăng nhập</a>
+						<div class="group">
+			                <i class="fa-solid fa-lock"></i>
+			                <input type="password" placeholder=" " id="password" autocomplete="off" name="new-password" required>
+			                <label >Mật khẩu mới</label>
+			            </div>		           
+			            <div class="group">
+			                <i class="fa-solid fa-lock"></i>
+			                <input type="password" placeholder=" " id="password" autocomplete="off" name="cf-new-password" required>
+			                <label for="password">Nhập lại mật khẩu mới</label>
+			            </div>   
+			            <div class="group">
+			                <i class="fa-solid fa-lock"></i>
+			                <input type="text" placeholder=" " id="name" autocomplete="off" name="verify-code" required>
+			                <label for="name">Mã xác nhận</label>
+			            </div>
+						<h4 th:text="${message}"></h4>     
+			            <div class="loginBtn">
+			                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+			            </div>
+			            
+			        </div>
+			
+			    </div>	
+			</form>
+			
+	    <script>
+	        function changeTypePassword(){
+	            document.getElementById('password').type = document.getElementById('password').type == 'text' ? 'password' : 'text';
+	        }
+	    </script> 
+	</main>
+</body>
+</html>

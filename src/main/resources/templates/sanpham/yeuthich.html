@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/index::dynamic(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<main>
+		<br> <br> <br> <br>
+		<section id="product">
+			<div id="main">
+
+				<!-- 
+				 <div class="wrapper-shope">
+					<h1>List Favorites</h1>
+					<br> <br>
+					<div class="project">
+						<div class="shop">
+							<div class="box" ng-repeat="item in listFavAll">
+								<a href="/sanpham/chitiet/{{item.product.id}}"> <img
+									ng-src="../../../assert/productimg/{{item.product.image}}"
+									alt="" class="card-img"
+									onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'">
+								</a>
+								<div class="content">
+									<p class="name-box" id="name-boxbox">{{item.product.name}}</p>
+									<p class="name-box">{{item.product.price}} VNĐ</p>
+									<p class="btn-area" ng-click="favorite.delete(item)">
+										<i aria-hidden="true" class="fa fa-trash"></i> <br> <br>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>  -->
+				<!--  -->
+				<div class="list-heart">
+					<div class="item-heart" ng-repeat="item in listFavAll">
+						<a href="/sanpham/chitiet/{{item.product.id}}"> <img
+							ng-src="../../../assert/productimg/{{item.product.image}}" alt=""
+							class="card-img"
+							onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'">
+						</a>
+						<div class="content-heart2">
+							<div class="name-heart">{{item.product.name}}</div>
+						</div>
+						<div class="content-heart">
+							<div>{{item.product.price}} $</div>
+							<div class="heart-hover">
+								<i class='bx bxs-trash' id="yeuthich" ng-click="favorite.delete(item)"></i>
+							</div>
+							<div class="heart-hover">
+								<a class='bx bxs-cart-add' id="yeuthich"  href="/sanpham/chitiet/{{item.product.id}}"></a	>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</section>
+	</main>
+</body>
+</html>

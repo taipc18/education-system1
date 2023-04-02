@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(main)">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- MAIN CSS  -->
+<link rel="stylesheet" href="../../../../assert/css/TrangChu.css">
+<link rel="stylesheet" href="../../../../assert/css/Prcard.css">
+<link rel="stylesheet" href="../../../../assert/css/ShoppingCard.css">
+<script src="../../../../assert/designjs/next.js"></script>
+<!-- swiper css 
+<link rel="stylesheet" href="../../../../../target/classes/static/assert/css/swiper.min.css">
+-->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+/>
+<!-- MAIN ICON  -->
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<!-- GOOLGE FONT  -->
+<link href="https://fonts.googleapis.com/css?display=swap&family=Inter:400,400italic%7CBai+Jamjuree:400,400italic"
+    rel="stylesheet" type="text/css" />
+<!-- ANIMOTION CSS LINK  -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+</head>
+<body ng-app="cityzenApp" ng-controller="cityzenCtrl">
+	<nav class="row">
+        <div th:replace="/layout/menu.html"></div>
+    </nav>
+        <!-- Swiper -->
+   
+    
+    <div>
+        <div th:replace="${main}"></div>
+    </div>
+    
+    <footer class="footer-16371">
+       <div class="fooder_container">
+           <div class="row justify-content-center">
+               <div class="col-md-9 text-center">
+                   <div class="footer-site-logo mb-4">
+                       <a href="#">
+                           C<span>ITY</span>Z<span>EN</span>
+                           
+                       </a>
+                   </div>
+                   <ul class="list-unstyled nav-links mb-5">
+                       <li><a href="#" class="link">HOME</a></li>
+                       <li><a href="#" class="link">ABLOUT</a></li>
+                       <li><a href="#" class="link">CONTACT</a></li>
+                       <li><a href="#" class="link">SUPPORT</a></li>
+                   </ul>
+                   <div class="social mb-4">
+                       <h3>Stay in touch</h3>
+                       <ul class="list-unstyled">
+                           <li class="in">
+                               <box-icon name='instagram' type='logo' flip='horizontal' animation='tada'
+                                   color='#df588a'></box-icon>
+                           </li>
+                           <li class="fb">
+                               <box-icon name='facebook' type='logo' flip='horizontal' animation='tada'
+                                   color='#3742d0'></box-icon>
+                           </li>
+                           <li class="tw">
+                               <box-icon name='twitter' type='logo' flip='horizontal' animation='tada'
+                                   color='#15b8ff'></box-icon>
+                           </li>
+                           <li class="pin">
+                               <box-icon name='pinterest' type='logo' flip='horizontal' animation='tada'
+                                   color='#dd4d5a'></box-icon>
+                           </li>
+                           <li class="dr">
+                               <box-icon name='dribbble' type='logo' flip='horizontal' animation='tada'
+                                   color='#fa38c1'></box-icon>
+                           </li>
+                       </ul>
+                   </div>
+
+                   <div class="copyright">
+                       <p class="mb-0"><small>&copy; Colorlib. All Rights Reserved.</small></p>
+                   </div>
+               </div>
+           </div>
+       </div>
+       </div>
+   </footer>
+	<div class="alert-wifi" id="error">
+       <!--  <i class="fa-solid fa-wifi icon"></i> -->
+        <i class='bx bx-wifi-2 icon' ></i>
+        <div class="content">
+            <div class="title">
+                Wifi disconnect!
+            </div>
+            <div class="des">
+                Please check your connection
+            </div>
+        </div>
+       <!--  <i class="fa-solid fa-x close"></i> -->
+        <i class='bx bx-x close'></i>
+    </div>
+
+    <div class="alert-wifi" id="success">
+        <!-- <i class="fa-solid fa-wifi icon"></i> -->
+        <i class='bx bx-wifi-2 icon' ></i>
+        <div class="content">
+            <div class="title">
+                Wifi connected!
+            </div>
+            <div class="des">
+                Successfully connected
+            </div>
+        </div>
+        <!-- <i class="fa-solid fa-x close"></i> -->
+        <i class='bx bx-x close' ></i>
+    </div>
+    <div>
+        
+    </div>
+    <!-- Initialize Swiper -->
+    <script>
+    /*   Wifi connected!  */ 
+    let alerts = document.querySelectorAll('.alert-wifi');
+	alerts.forEach(item=>{
+	    item.addEventListener('click', function(event){
+	        if(event.target.classList.contains('close')){
+	            item.style.display = 'none';
+	        }
+	    })
+	})
+	window.addEventListener('offline', function(){
+	    document.getElementById('success').style.display = 'none';
+	    document.getElementById('error').style.display = 'grid';
+	})
+	window.addEventListener('online', function(){
+	    document.getElementById('error').style.display = 'none';
+	    document.getElementById('success').style.display ='grid';
+	});
+	   /*   HEADER JS  */ 
+	   var swiper = new Swiper(".mySwiper10", {
+	    spaceBetween: 4,
+	    slidesPerView: 4,
+	    freeMode: true,
+	    watchSlidesProgress: true
+	  });
+	  var swiper2 = new Swiper(".mySwiper12", {
+	    spaceBetween: 4,
+	    navigation: {
+	      nextEl: ".swiper-button-next",
+	      prevEl: ".swiper-button-prev"
+	    },
+	    thumbs: {
+	      swiper: swiper
+	    }
+	  });
+   /*   HEADER JS  */ 
+    var swiper = new Swiper(".mySwiper", {
+      speed: 600,
+      parallax: true,
+      spaceBetween: 25,
+      loop: true,
+      centerSlide:'true',
+      fade:'true',
+      grabCursor:'true',
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        dynamicBullets:true
+      },
+      navigation: {
+        nextEl: "#next-bro",
+        prevEl: "#pev-bro",
+      },
+    });
+  /*  PRODUCT JS */
+  var swiper = new Swiper(".slide-content", {
+	  slidesPerView: 4,
+	    spaceBetween: 25,
+	    loop: true,
+	    centerSlide:'true',
+	    fade:'true',
+	    grabCursor:'true',
+	    pagination: {
+	      el: ".swiper-pagination",
+	      clickable: true,
+	      dynamicBullets:true
+      
+    },
+    navigation: {
+      nextEl: "#next-1",
+      prevEl: "#pev-1",
+    },
+   
+  });
+
+    </script>
+   <!-- icon js -->
+   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+<script src="https://kit.fontawesome.com/8f3f48f7f9.js" crossorigin="anonymous"></script>
+<!-- swiper js 
+<script src="../../../../../target/classes/static/assert/designjs/swiper-bundle.min.js"></script>
+-->
+
+<script src="../../../assert/js/cityzen.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+
+</html>

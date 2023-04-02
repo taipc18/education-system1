@@ -1,0 +1,88 @@
+<!-- Modal -->
+<form>
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">News editing</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="card-heading">News Information</div>
+				<hr>
+				<div class="row">
+					<div class="col-sm-8">
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<div>Image</div>
+								<input type="file" class="form-control" id="image"
+									onchange="angular.element(this).scope().imageChanged(this.files)">
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<div>Create Date</div>
+								<input ng-model="form.createDate" type="date"
+									class="form-control">
+							</div>
+							<div class="form-group col-sm-6">
+								<div>Writer</div>
+								<input id="write" ng-model="form.writer" class="form-control">
+							</div>
+						</div>
+						<div class="form-group col-sm-12">
+							<div>News name</div>
+							<input id="newsname" ng-model="form.name" class="form-control">
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<label for="image"><div>Image</div> <img
+							ng-src="{{'../../../assert/productimg/'+ form.image}}"
+							style="width: 100%;"
+							onchange="angular.element(this).scope().imageChanged(this.files)"
+							alt=""
+							onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'">
+						</label>
+					</div>
+					<div class="form-group col-sm-12">
+						<div>Description</div>
+						<textarea id="description" ng-model="form.description" class="form-control"
+							rows="2"></textarea>
+					</div>
+
+					<div class="form-group col-sm-12">
+						<div>Opening</div>
+						<textarea id="opening" ng-model="form.opening" class="form-control" rows="3"></textarea>
+					</div>
+					<div class="form-group col-sm-12">
+						<div>Body1</div>
+						<textarea id="body1" ng-model="form.body1" class="form-control" rows="5"></textarea>
+					</div>
+					<div class="form-group col-sm-12">
+						<div>Body2</div>
+						<textarea id="body2" ng-model="form.body2" class="form-control" rows="5"></textarea>
+					</div>
+					<div class="form-group col-sm-12">
+						<div>Ending</div>
+						<textarea id="ending" ng-model="form.ending" class="form-control" rows="2"></textarea>
+					</div>
+				</div>
+
+				<div class="card-footer text-center">
+					<button ng-click="validateCreate()" type="button"class="btn btn-success">Create</button>
+					<button ng-click="reset()" type="button" class="btn btn-primary">Reset</button>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
+<script>
+
+</script>

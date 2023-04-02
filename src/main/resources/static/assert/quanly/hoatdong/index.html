@@ -1,0 +1,27 @@
+<main id="main" class="main">
+ <!-- Top Selling -->
+            <div class="col-12">
+              <div class="card top-selling overflow-auto">
+                <div class="card-body pb-0">
+                  <h5 class="card-title">Lịch sử hoạt động</h5>
+                  <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="item in pager.activities">
+                        <td class="text-truncate">{{item.activity}}</td>
+                        <td class="text-truncate">{{item.createDate}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+					<div class="card-footer text-center">
+						<button ng-click="pager.prev()" class="btn btn-primary"><</button>
+						<button ng-click="pager.next()" class="btn btn-primary">></button>
+					</div>
+                </div>
+
+              </div>
+            </div><!-- End Top Selling -->
+  </main><!-- End #main -->

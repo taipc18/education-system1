@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+ <title>Login </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+   
+
+     <link rel="stylesheet" href="../../../../assert/css/Login.css">  
+</head>
+
+
+<body>
+	<form th:action="@{|/baomat/login|}" method="post">
+	<div class="area" >
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+    </div >
+		<div class="loginContainer">
+		
+		
+	        <div class="logo">
+	            <img src="../../../assert/images/flogo.png">
+	        </div>
+	        <div class="form">
+	            <div class="group">
+	                <h1>Login</h1>
+	               
+	            </div>
+	            <div class="group">
+	                <i class="fa-regular fa-user"></i>
+	                <input type="text" placeholder=" " id="name" autocomplete="off" name="username" required>
+	                <label for="name">Username</label>
+	            </div>
+	            <div class="group">
+	                <i class="fa-solid fa-lock"></i>
+	                <input type="password" placeholder=" " id="password" autocomplete="off" name="password" required>
+	                <label for="password">Password</label>
+	            </div>
+	            <br>
+	            <i class="login-thongbao" th:text="${ms}"></i>
+	            <div class="login-btn">
+	                <a th:href="@{/baomat/signup/form}">Đăng kí</a> /
+	                <a th:href="@{/baomat/quenmatkhau/form}">Quên mật khẩu</a>
+	            </div>
+	            <div class="loginBtn">
+	                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+	            </div>   
+	        </div>
+	    </div>
+	</form>
+    	
+    <script>
+        function changeTypePassword(){
+            document.getElementById('password').type = document.getElementById('password').type == 'text' ? 'password' : 'text';
+        }
+    </script>     	    	     
+</body>
+</html>

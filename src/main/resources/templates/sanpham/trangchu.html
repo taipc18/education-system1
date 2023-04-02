@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/index::dynamic(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- swiper css -->
+<link rel="stylesheet"
+	href="../../../../../target/classes/static/assert/css/swiper.min.css">
+</head>
+
+<body>
+	<main>
+
+
+
+		<section id="home" class="home-waye">
+			<!-- Swiper -->
+			<div
+				style="-swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+				class="swiper-lg mySwiper">
+				<div class="parallax-bg" id="container03"
+					data-swiper-parallax=" -23%"></div>
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<div class="wrapper">
+							<div class="inner">
+								<p id="text10"
+									class="style1 animate__animated animate__fadeInUp ">Trang chủ</p>
+								<h1 id="text17"
+									class="style2 animate__animated animate__fadeInUp">CityZen</h1>
+								<p id="text18"
+									class="style3 animate__animated animate__fadeInUp">Trang web bán đồ chơi mô hình
+									không phải hàng đầu Việt Nam. Trong thời đại công nghệ và Internet phát triển mạnh mẽ, hầu hết mọi người đã chuyển sang xem thông tin giải trí và tin tức trực tuyến thay vì báo và tạp chí như trước.</p>
+								<button class="btn-39 animate__animated animate__fadeInUp "
+									onmousedown="party.confetti(this)">
+									<span class="new">NEW</span> <span class="old">Click me!</span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="wrapper">
+							<div class="inner">
+								<p id="text10"
+									class="style1 animate__animated animate__fadeInUp ">Risus
+									letanie</p>
+								<h1 id="text17"
+									class="style2 animate__animated animate__fadeInUp">Magna</h1>
+								<p id="text18"
+									class="style3 animate__animated animate__fadeInUp">Trang web bán đồ chơi mô hình
+									không phải hàng đầu Việt Nam.rong thời đại công nghệ và Internet phát triển mạnh mẽ, hầu hết mọi người đã chuyển sang xem thông tin giải trí và tin tức trực tuyến thay vì báo và tạp chí như trước.</p>
+								<button class="btn-39" onmousedown="party.confetti(this)">
+									<span class="new">NEW</span> <span class="old">Click me!</span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="wrapper">
+							<div class="inner">
+								<p id="text10"
+									class="style1 animate__animated animate__fadeInUp ">Risus
+									letanie</p>
+								<h1 id="text17"
+									class="style2 animate__animated animate__fadeInUp">Lego</h1>
+								<p id="text18"
+									class="style3 animate__animated animate__fadeInUp">Xuất phát từ thực tế đó, đã có rất nhiều tổ chức, doanh nghiệp triển khai xây dựng mô hình website tin tức trực tuyến để kinh doanh và phục vụ nhu cầu của bạn đọc.</p>
+								<button class="btn-39" onmousedown="party.confetti(this)">
+									<span class="new">NEW</span> <span class="old">Click me!</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-button-next" id="next-bro"></div>
+				<div class="swiper-button-prev" id="pev-bro"></div>
+				<div class="swiper-pagination1" id=""></div>
+			</div>
+		</section>
+
+
+
+
+		<section id="product">
+			<div id="main">
+				<div class="inner">
+					<div id="container05" class="style-lg container default full">
+						<div class="inner-wrapper">
+							<p id="text10"
+								class="style  animate__animated animate__fadeInUp 2s">Sản phẩm</p>
+							<div class="inner">
+								<div id="innered-lg">
+									<div class="inner-sale">
+										<button>
+											<a href=""><span>New</span> Products</a>
+										</button>
+										<div class="S-N">
+											<a th:each="c:${cates}"
+												th:href="@{|/sanpham/trangchu/loai?cid=${c.id}|}">[[${c.name}]]</a>
+										</div>
+									</div>
+
+									<div class="slide-container swiper">
+										<div class="slide-content">
+											<div class="card-wrapper swiper-wrapper">
+												<div class="card swiper-slide" ng-repeat="item in listfindAllByOrderByIdDesc"
+													id="card-productro">
+													<div class="image-content">
+														<span class="overlay"></span>
+														<div class="card-image">
+															<a href="/sanpham/chitiet/{{item.id}}"> 
+																<img ng-src="../../../assert/productimg/{{item.image}}" alt="" class="card-img" onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'">
+															</a>
+														</div>
+													</div>
+													<div class="card-content">
+														<h2 class="name">{{item.name}}</h2>
+														<p class="description">{{item.describe1}}</p>
+														<div class="tulodc">
+															<span class="pice-lg">{{item.price | currency:'':0}} VND</span>
+															<div th:if="${#request.remoteUser}">
+																<button class="btn-31" ng-click="cart.add(item.id)">
+																<span class="text-container"> <span class="text">Mua</span>
+																</span>
+															</button>
+															</div>
+															<div th:if=" not ${#request.remoteUser}">
+																<button class="btn-31" >
+																<a class="text-container" href="/baomat/login/form"> <span class="text">Mua</span>
+																</a>
+															</button>
+															</div>
+															
+															
+															
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="swiper-button-next swiper-navBtn" id="next-1"></div>
+										<div class="swiper-button-prev swiper-navBtn" id="pev-1"></div>
+										<!-- <div class="swiper-pagination"></div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		
+		
+		
+		<section id="product">
+			<div id="main">
+				<div class="inner">
+					<div id="container05" class="style-lg container default full">
+						<div class="inner-wrapper">
+							<div class="inner">
+								<div id="innered-lg">
+									<div class="inner-sale">
+										<button>
+											<a href="">Products</a>
+										</button>
+										<div class="S-N">
+											<input class="search-trangchu" type="text" name="search" ng-model="search.$" placeholder="search">
+											<a th:each="c:${cates}"
+												th:href="@{|/sanpham/trangchu/loai?cid=${c.id}|}">[[${c.name}]]</a>
+										</div>
+									</div>
+									<div class="card-sliderop">
+										<div class="card-sliderop2">
+											<div class="cardered"
+												ng-repeat="item in pager.list | filter:search">
+												<a href="/sanpham/chitiet/{{item.id}}"> 
+													<img ng-src="../../../assert/productimg/{{item.image}}" alt="" class="card-img" onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'">
+												</a>
+												<div class="card-content">
+													<h2 class="name">{{item.name}}</h2>
+													<p class="description">{{item.describe1}}</p>
+													<div class="tulodc">
+														<span class="pice-lg">{{item.price | currency:'':0}} VND  </span>
+														<div th:if="${#request.remoteUser}">
+																<button class="btn-31" ng-click="cart.add(item.id)">
+																<span class="text-container"> <span class="text">Mua</span>
+																</span>
+															</button>
+															</div>
+															<div th:if=" not ${#request.remoteUser}">
+																<button class="btn-31" >
+																<a class="text-container" href="/baomat/login/form"> <span class="text">Mua</span>
+																</a>
+															</button>
+															</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="rpd">
+										<i class='bx bx-chevron-left'ng-click="pager.prev()" ></i>
+										<i class='bx bx-chevron-right' ng-click="pager.next()"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		
+		<section id="product">
+			<div id="main">
+				<div class="inner">
+					<div id="container05" class="style-lg container default full">
+						<div class="inner-wrapper">
+							<p id="text10"
+								class="style  animate__animated animate__fadeInUp 2s">Tin tức</p>
+							<div class="inner">
+								<div id="innered-lg">
+									<div class="inner-sale">
+										<button>
+											<a href=""><span>Zen </span> News</a>
+										</button>
+										<div class="S-N"></div>
+									</div>
+
+									<div class="slide-container swiper">
+										<div class="slide-content">
+											<div class="card-wrapper swiper-wrapper">
+												<div class="card swiper-slide" ng-repeat="itemNews in listNews | filter:searchNews"
+													id="card-productro">
+													<div class="image-content">
+														<span class="overlay"></span>
+														<div class="card-image">
+															<a href="/tintuc/chitiet/{{itemNews.id}}"> 
+																<img ng-src="../../../assert/productimg/{{itemNews.image}}" alt="" class="card-img" onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'">
+															</a>
+														</div>
+													</div>
+													<div class="card-content">
+														<h2 class="name">{{itemNews.name}}</h2>
+														<p class="description">{{itemNews.description}}</p>
+														<div class="tulodc">
+															<span class="pice-lg">{{itemNews.writer}}</span>
+															<span class="pice-lg">{{itemNews.createDate}}</span>														
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="swiper-button-next swiper-navBtn" id="next-1"></div>
+										<div class="swiper-button-prev swiper-navBtn" id="pev-1"></div>
+										<!-- <div class="swiper-pagination"></div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="wrapper">
+        <div id="main">
+            <div class="inner">
+                <div id="container06" class="style1 container default full">
+                    <div class="wrapper">
+                        <div class="innered-lg" data-onvisible-trigger="1" data-reorder="1,0">
+                            <div>
+                                <p id="text002" class="style3-lg">Augue neque</p>
+                                <h2 id="text03" class="style1-lg">Magna sed nullam nisl adipiscing</h2>
+                                <p id="text05" class="style4-lg">Pulvinar pellentesque habitant morbi tristique sit amet
+                                    risus nullam eget felis eget consequat.</p>
+                                <div class="laber">
+                                    <button class="btn-29">
+                                        <span class="text-container">
+                                            <span class="text">CITYZEN</span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div>
+                                <div id="image01" class="style3 image" data-position="center"><span class="frame"><img
+                                            src="https://cdna.artstation.com/p/assets/images/images/045/455/622/large/gabriel-bjork-stiernstrom-battleshipapollo-colussusstealth-by-gabrielbjorkstiernstrom-high.jpg?1642755535"
+                                            alt="" /></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div id="main-text">
+            <div class="inner">
+                <div id="container07" class="style1 container default full">
+                    <div class="wr">
+                        <div class="ngoctai">
+                            <div id="image04" class="style1 image"><span class="frame-lg"><img
+                                src="https://i.pinimg.com/736x/25/2f/18/252f18b0dd9c4c67a12c5fd4b2e4b14d.jpg" alt="" /></span></div>
+                            
+                               <div class="nhatduong">
+                                <hr id="divider02" class="style2">
+                                <h1 id="text-tai" class="style1-lg">The Future Is Weird</h1>  
+                                <!--  -->
+                                <hr id="divider02" class="style0">
+                                <p id="text--duong" class="style4-lg"> Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                   Quod nam nihil atque eveniet odio in saepe vitae autem 
+                                   temporibus a.</p>  
+                               </div>
+    
+                        </div>
+                        <!--  -->
+                        <hr id="divider02" class="style1">
+                        <div class="chinhsach">
+                            <div class="card-chinhsach">
+                                <div class="chinhsach-img">
+                                    <div class="chinhsach-icon">
+                                        <i class="fa-solid fa-truck"></i>
+                                    </div>
+                                    <div class="chinhsach-doingoai"></div>
+                                    <div class="chinhsach-GH">
+                                        <span class="title-icon">chính sách giao hàng</span>
+                                    </div>
+                                </div>
+                                <div class="chinhsach-title">
+                                    <h3>chính sách giao hàng</h3>
+                                </div>
+                            </div>
+                            <div class="card-chinhsach">
+                                <div class="chinhsach-img">
+                                    <div class="chinhsach-icon">
+                                        <i class="fa-sharp fa-solid fa-shirt"></i>
+                                    </div>
+                                    <div class="chinhsach-doingoai"></div>
+                                    <div class="chinhsach-GH">
+                                        <span class="title-icon">hướng dẫn đổi trả</span>
+                                    </div>
+                                </div>
+                                <div class="chinhsach-title">
+                                    <h3>hướng dẫn đổi trả</h3>
+                                </div>
+                            </div>
+                            <div class="card-chinhsach">
+                                <div class="chinhsach-img">
+                                    <div class="chinhsach-icon">
+                                        <i class="fa-sharp fa-solid fa-thumbs-up"></i>
+                                    </div>
+                                    <div class="chinhsach-doingoai"></div>
+                                    <div class="chinhsach-GH">
+                                        <span class="title-icon">hướng dẫn đặt hàng</span>
+                                    </div>
+                                </div>
+                                <div class="chinhsach-title">
+                                    <h3>hướng dẫn đặt hàng</h3>
+                                </div>
+                            </div>
+                            <div class="card-chinhsach">
+                                <div class="chinhsach-img">
+                                    <div class="chinhsach-icon">
+                                        <i class="fa-solid fa-lock"></i>
+                                    </div>
+                                    <div class="chinhsach-doingoai"></div>
+                                    <div class="chinhsach-GH">
+                                        <span class="title-icon">chính sách bảo mật</span>
+                                    </div>
+                                </div>
+                                <div class="chinhsach-title">
+                                    <h3>chính sách bảo mật</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- <div class="form-group col-sm-6">
+			<input type="text" name="search" ng-model="search.$"
+				placeholder="search">
+		</div>
+		<br>
+		<div ng-repeat="item in pager.list | filter:search" class="col-sm-3">
+			<div class="card card-primary poly-item text-center" id="cart-body">
+				<div class="hover-rotate">
+					<a href="/sanpham/chitiet/{{item.id}}"> <b>{{item.image}}</b>
+					</a>
+					<div class="card-title">{{item.name}}</div>
+					<b class="pull-left">{{item.price}} VNĐ</b> <br>
+					<button ng-click="cart.add(item.id)">Mua</button>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer text-center">
+			<button ng-click="pager.first()" class="btn btn-danger"></button>
+			<button ng-click="pager.prev()" class="btn btn-primary"></button>
+			<button class="btn btn-success">{{pager.page + 1}} of
+				{{pager.count}}</button>
+			<button ng-click="pager.next()" class="btn btn-primary"></button>
+			<button ng-click="pager.last()" class="btn btn-danger"></button>
+		</div>
+
+		<br> <br> <br> <br>
+
+		<div class="form-group col-sm-6">
+			<input type="text" name="search" ng-model="searchNews.$" placeholder="search">
+		</div>
+		<br>
+		<div ng-repeat="itemNews in pagerNews.listNews | filter:searchNews"
+			class="col-sm-3">
+			<div class="card card-primary poly-item text-center" id="cart-body">
+				<div class="hover-rotate">
+					<a href="/tintuc/chitiet/{{itemNews.id}}"> <b>{{itemNews.image}}</b>
+					</a>
+					<div class="card-title">{{itemNews.name}}</div>
+					<b class="pull-left">{{itemNews.description}}</b> <b
+						class="pull-left">{{itemNews.createDate}}</b> <b class="pull-left">{{itemNews.writer}}</b>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer text-center">
+			<button ng-click="pagerNews.first()" class="btn btn-danger"></button>
+			<button ng-click="pagerNews.prev()" class="btn btn-primary"></button>
+			<button class="btn btn-success">{{pagerNews.page + 1}} of
+				{{pagerNews.count}}</button>
+			<button ng-click="pagerNews.next()" class="btn btn-primary"></button>
+			<button ng-click="pagerNews.last()" class="btn btn-danger"></button>
+		</div>
+		-->
+	</main>
+	<!-- swiper js -->
+	<script
+		src="../../../../../target/classes/static/assert/designjs/swiper-bundle.min.js"></script>
+	<script
+		src="../../../../../target/classes/static/assert/designjs/next.js"></script>
+</body>
+
+</html>

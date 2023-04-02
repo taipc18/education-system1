@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/index::dynamic(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<main>
+	<br> <br> <br> <br>
+		<section id="product">
+			<div id="main">
+				<a href="/sanpham/chitiet/{{item.product.id}}"> <img
+									ng-src="../../../assert/images/error.gif" style="height:900px;width:1490px"
+									alt="" class="card-img"
+									onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'">
+								</a>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

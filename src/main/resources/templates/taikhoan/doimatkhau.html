@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index::dynamic(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main>
+	<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+		
+		<div class="container_xthuc"> 
+			<div class="main_xthuc"> 
+				<div class="title_xthuc">
+					<h2>Đổi Mật Khẩu</h2>
+				</div>
+				<div class="input_xthuc">
+					<input class="w3-input" ng-model="thongtin.password"
+						   type="password" id="password"><i class='bx bx-show-alt' id="show"></i>
+					<button class="btn_xthuc" ng-click="doimatkhau()"> <a>Xác nhận</a> </button>
+				</div>
+				
+			</div>	
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<script type="text/javascript">
+		
+		
+		//--------------------------------- đừng đụng vào cái này --------------------------
+			const app = angular.module("cityzenApp",[]);
+			app.controller("cityzenCtrl", function($scope, $http){
+				
+				$scope.thongtin = {};
+				
+				$scope.initializeUser = function(){
+					var ten = document.getElementById('username').innerText;
+					$scope.ten = ten;
+					console.log(ten);
+					let url = "http://localhost:8080/rest/accounts/"+ten;
+					console.log(url);
+					$http.get(url).then(resp => {
+						$scope.thongtin = resp.data;
+						console.log($scope.thongtin);
+					});
+				}
+				
+				$scope.initializeUser();
+				
+				
+				$scope.doimatkhau = function(){
+					var user = angular.copy($scope.thongtin);
+					$http.put(`/rest/accounts/${user.username}`, user).then(resp => {
+						const Toast = Swal.mixin({
+							toast: true,
+							position: 'bottom-end',
+							showConfirmButton: false,
+							timer: 2000,
+							timerProgressBar: true,
+							didOpen: (toast) => {
+								toast.addEventListener('mouseenter', Swal.stopTimer)
+								toast.addEventListener('mouseleave', Swal.resumeTimer)
+							},
+							didClose:(toast)=>{
+								console.log(resp.data);
+								location.href = "/sanpham/trangchu";
+							}
+						})
+						Toast.fire({
+							icon: 'success',
+							title: 'Update successfully'
+						})
+					}).catch(error => {
+						const Toast = Swal.mixin({
+							toast: true,
+							position: 'bottom-end',
+							showConfirmButton: false,
+							timer: 2000,
+							timerProgressBar: true,
+							didOpen: (toast) => {
+								toast.addEventListener('mouseenter', Swal.stopTimer)
+								toast.addEventListener('mouseleave', Swal.resumeTimer)
+							}
+						})
+						Toast.fire({
+							icon: 'error',
+							title: 'Update Failed'
+						})
+						console.log("Error: ", error);
+					})
+				}
+				
+				document.getElementById('show').onclick = function(){
+					let password = document.getElementById('password');
+					password.type = password.type == 'password' ? 'text' : 'password';
+				}
+			});
+		</script>
+    </main>
+</body>
+</html>

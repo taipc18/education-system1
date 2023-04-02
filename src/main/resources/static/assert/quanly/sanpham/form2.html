@@ -1,0 +1,121 @@
+	<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Product form</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="card-heading">Product Information</div>
+				<hr>
+						<div class="row">
+							<div class="form-group col-sm-6" style="display:none">
+								<input type="file" class="form-control" name="file" id="image"
+									onchange="angular.element(this).scope().imageChanged(this.files)">
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-6" style="display:none">
+								<input type="file" class="form-control" name="file" id="image1"
+									onchange="angular.element(this).scope().imageChanged1(this.files)">
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-6" style="display:none">
+								<input type="file" class="form-control" name="file" id="image2"
+									onchange="angular.element(this).scope().imageChanged2(this.files)">
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-6" style="display:none">
+								<input type="file" class="form-control" name="file" id="image3"
+									onchange="angular.element(this).scope().imageChanged3(this.files)">
+							</div>
+						</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<div>Name</div>
+								<input id="name" ng-model="form.name" class="form-control">
+							</div>
+							<div class="form-group col-sm-6">
+								<div>Price</div>
+								<input id="price" ng-model="form.price" class="form-control">
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-4">
+								<div>Category</div>
+								<select id="category" ng-model="form.category.id" class="form-control">
+									<option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
+								</select>
+							</div>
+							<div class="form-group col-sm-4">
+								<div>Quantity</div>
+								<input id="quantity" type="number" ng-model="form.quantity" class="form-control">
+							</div>
+							<div class="form-group col-sm-4">
+								<div>Create Date</div>
+								<input ng-model="form.createDate" type="date"
+									class="form-control">
+							</div>
+						</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-12">
+								<div>Short description</div>
+								<textarea id="short" class="form-control" ng-model="form.describe1"
+									rows="2"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-12">
+								<div>Description</div>
+								<textarea id="description" class="form-control" ng-model="form.describe2"
+									rows="5"></textarea>
+							</div>
+						</div>
+						<div class="row">
+						<div class="col-sm-3">
+						<label for="image"><div>Image 1</div> <img
+							ng-src="{{'../../../assert/productimg/'+ form.image}}"
+							style="width: 50%;" onchange="angular.element(this).scope().imageChanged(this.files)" alt="" onerror="this.onerror=null; this.src='assert/productimg/noimg.jpg'">
+						</label>
+					</div>
+					<div class="col-sm-3">
+						<label for="image1"><div>Image 2</div> <img
+							ng-src="{{'../../../assert/productimg/'+ form.image1}}"
+							style="width: 50%;" onchange="angular.element(this).scope().imageChanged(this.files)" alt="" onerror="this.onerror=null; this.src='assert/productimg/noimg.jpg'">
+						</label>
+					</div>
+					<div class="col-sm-3">
+						<label for="image2"><div>Image 3</div> <img
+							ng-src="{{'../../../assert/productimg/'+ form.image2}}"
+							style="width: 50%;" onchange="angular.element(this).scope().imageChanged(this.files)" alt="" onerror="this.onerror=null; this.src='assert/productimg/noimg.jpg'">
+						</label>
+					</div>
+					<div class="col-sm-3">
+						<label for="image3"><div>Image 4</div> <img
+							ng-src="{{'../../../assert/productimg/'+ form.image3}}"
+							style="width: 50%;" onchange="angular.element(this).scope().imageChanged(this.files)" alt="" onerror="this.onerror=null; this.src='assert/productimg/noimg.jpg'">
+						</label>
+					</div>
+					</div>
+					<hr>
+					<div class="card-footer text-center">
+						<button ng-click="validateCreate()" type="submit" class="btn btn-success">Create</button>
+						<button ng-click="reset()" type="button" class="btn btn-primary">Reset</button>
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,261 @@
+<!-- <div>Tá»•ng sáº£n pháº©m: {{tongSanpham.count}}</div>
+<div>Tá»•ng Ä‘Ă¡nh giĂ¡: {{tongDanhgia.count}}</div>
+<div>Tá»•ng Ä‘Æ¡n hĂ ng: {{tongDonhang.count}}</div> -->
+
+
+<main id="main" class="main">
+	<section class="section dashboard">
+		<div class="row">
+
+			<!-- Left side columns -->
+			<div class="col-lg-8">
+				<div class="row">
+
+					<!-- Sales Card -->
+					<div class="col-xxl-4 col-md-6">
+						<div class="card info-card sales-card">
+
+
+							<div class="card-body">
+								<h5 class="card-title">Tổng sản phẩm</h5>
+
+								<div class="d-flex align-items-center">
+									<div
+										class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+										<i class="bi bi-archive"></i>
+									</div>
+									<div class="ps-3">
+										<b style="font-size:20px">{{tongSanpham.count}}</b>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<!-- End Sales Card -->
+
+					<!-- Revenue Card -->
+					<div class="col-xxl-4 col-md-6">
+						<div class="card info-card revenue-card">
+
+							<div class="card-body">
+								<h5 class="card-title">Tổng doanh thu(VND)</h5>
+
+								<div class="d-flex align-items-center">
+									<div
+										class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+										<i class="bi bi-coin"></i>
+									</div>
+									<div class="ps-2">
+										<b style="font-size:20px">{{tongtien}}</b>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<!-- End Revenue Card -->
+
+					<!-- Customers Card -->
+					<div class="col-xxl-4 col-xl-12">
+
+						<div class="card info-card customers-card">
+
+							<div class="card-body">
+								<h5 class="card-title">Tổng đơn hàng</h5>
+
+								<div class="d-flex align-items-center">
+									<div
+										class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+										<i class="bi bi-basket"></i>
+									</div>
+									<div class="ps-3">
+										<b style="font-size:20px">{{tongDonhang.count}}</b>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+					<!-- End Customers Card -->
+
+					<!-- Reports -->
+					<div class="col-12">
+						<div class="card">
+
+							<div class="card-body">
+								<h5 class="card-title">
+									Thống kê doanh thu theo loại
+								</h5>
+								<div id="barChart" style="min-height: 400px;" class="echart">
+									<canvas id="myChart"></canvas>
+								</div>
+								<!-- End Bar Chart -->
+
+							</div>
+
+						</div>
+					</div>
+					<!-- End Reports -->
+
+					<!-- Recent Sales -->
+					<div class="col-12">
+						<div class="card recent-sales overflow-auto">
+
+							<div class="card-body">
+								<h5 class="card-title">Đơn hàng mới nhất</h5>
+
+								<table class="table table-borderless datatable">
+									<thead>
+										<tr>
+											<th scope="col">STT</th>
+											<th scope="col">Purchaser</th>
+											<th scope="col">Email</th>
+											<th scope="col">Address</th>
+											<th scope="col">Create Date</th>
+											<th scope="col">Status</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr
+											ng-repeat="order in pagerOrders.items | filter: pager.searchOrders | filter:searchOrders">
+											<td class="text-truncate">{{order.id}}</td>
+											<td class="text-truncate">{{order.account.fullname}}</td>
+											<td class="text-truncate">{{order.account.email}}</td>
+											<td class="text-truncate">{{order.address}}</td>
+											<td class="text-truncate">{{order.createDate}}</td>
+											<td class="text-truncate">{{order.status}}</td>
+										</tr>
+									</tbody>
+								</table>
+
+							</div>
+
+						</div>
+					</div>
+					<!-- End Recent Sales -->
+
+					<!-- Top Selling -->
+					<div class="col-12">
+						<div class="card top-selling overflow-auto">
+
+							<div class="card-body pb-0">
+								<h5 class="card-title">Sản phẩm mới nhất</h5>
+
+								<table class="table table-borderless">
+									<thead>
+										<tr>
+											<th scope="col">Id</th>
+											<th scope="col">Name</th>
+											<th scope="col">Price</th>
+											<th scope="col">Date</th>
+											<th scope="col">Image</th>
+											<th scope="col">Category</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="item in pagerProducts.items | filter:search">
+											<td class="text-truncate">{{item.id}}</td>
+											<td class="text-truncate">{{item.name}}</td>
+											<td class="text-truncate">{{item.price | number:2}}</td>
+											<td class="text-truncate">{{item.createDate |
+												date:'dd-MM-yyyy'}}</td>
+											<td class="text-truncate">{{item.image}}</td>
+											<td class="text-truncate">{{item.category.name}}</td>
+										</tr>
+									</tbody>
+								</table>
+
+							</div>
+
+						</div>
+					</div>
+					<!-- End Top Selling -->
+
+				</div>
+			</div>
+			<!-- End Left side columns -->
+
+			<!-- Right side columns -->
+			<div class="col-lg-4">
+
+				<!-- Recent Activity -->
+				<div class="card">
+
+					<div class="card-body">
+						<h5 class="card-title">Lịch sử hoạt động</h5>
+
+						<div class="activity">
+
+
+
+							<div class="activity-item d-flex"
+								ng-repeat="item in pagerActivities.items">
+								<div class="activite-label">{{item.createDate}}</div>
+								<i
+									class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+								<div class="activity-content">{{item.activity}}</div>
+							</div>
+							<!-- End activity item-->
+
+
+						</div>
+
+					</div>
+				</div>
+				<!-- End Recent Activity -->
+
+				<!-- Budget Report -->
+				<div class="card">
+
+					<!-- Website Traffic -->
+					<div class="card">
+						</div>
+
+						<div class="card-body pb-0">
+							<h5 class="card-title">
+								Thống kê số lượng theo loại
+							</h5>
+
+							<div id="trafficChart" style="min-height: 400px;" class="echart">
+								<canvas id="earning"></canvas>
+							</div>
+						</div>
+					</div>
+					<!-- End Website Traffic -->
+
+					<!-- News & Updates Traffic -->
+					<div class="card">
+
+						<div class="card-body pb-0">
+							<h5 class="card-title">Tin tức mới nhất</h5>
+							
+							<div class="news">
+								<div class="post-item clearfix"
+									ng-repeat="itemNews in pagerNewss.items">
+									<a href="/tintuc/chitiet/{{itemNews.id}}">
+										<img ng-src="../../../assert/productimg/{{itemNews.image}}" alt="">
+									</a>
+									<h4>
+										<a href="#">{{itemNews.name}}</a>
+									</h4>
+									<p>{{itemNews.description}}</p>
+								</div>
+							</div>
+							
+							<!-- End sidebar recent posts-->
+
+						</div>
+					</div>
+					<!-- End News & Updates -->
+
+				</div>
+				<!-- End Right side columns -->
+
+			</div>
+		</div>
+	</section>
+
+</main>
+<!-- End #main -->

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/index::dynamic(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+
+<body>
+	<main th:object="${item}" id="chiitet-body">
+
+		<br> <br> <br> <br> <br> <br>
+		<!-- Showcase -->
+		<section class="section-a">
+			<div class="container" id="container-chitiet">
+				<div>
+					<h1 th:text="*{name}"></h1>
+					<h4 th:text="*{category.name}"></h4>
+					<p th:text="*{describe2}"></p>
+					<span>Số lượng: <a th:text="*{quantity}" ></a></span>
+					<span class="price-chitiet"><a th:text="|*{#numbers.formatDecimal(price, 1, 'POINT', 0, 'COMMA')}|" ></a> VND</span>
+					<div class="shoping-list1">
+					<!-- shopping -->
+					<div class="btn-dang">
+					<div th:if="${#request.remoteUser}" class="shp-shp-icon">
+						
+						<button th:attr="ng-click=@{|cart.add(*{id})|}" class="btn-local">
+						<i class='bx bx-cart' style='color:#ece7e7'  ></i> Mua</button>
+					</div>					
+					<div th:if=" not ${#request.remoteUser}"  >
+							
+							 <button class="btn-local" href="/baomat/login/form">
+						<i class='bx bx-cart' style='color:#ece7e7'  ></i> Mua</button>
+							
+					</div>
+					
+					<!-- <button class="btn-local"><i class="fa fa-home"></i> Home</button> -->
+					</div>
+					<!-- end shopping -->
+					<!-- add -->
+					<div class="btn-dang">
+					 <div th:if="${#request.remoteUser}"  class="shp-shp-icon">
+						<a>							
+							<button th:attr="ng-click=@{|cart.add(*{id})|}" class="btn-local">
+							<i class='bx bxs-add-to-queue' style='color:#ece7e7' ></i> Thêm</button>
+						</a>						
+					</div> 
+					
+					
+					<div th:if=" not ${#request.remoteUser}">
+						
+						
+						 <button class="btn-local" href="/baomat/login/form">
+						 <i class='bx bxs-add-to-queue' style='color:#ece7e7' ></i> Thêm</button>
+					</div>
+					</div>
+				<!-- end add -->
+				
+					<div class="btn-dang">
+					<th:block th:if="${#request.remoteUser}">
+					<div class="shp-shp-icon">
+							<th:block th:if="${coko}">
+								<form th:action="@{|/sanpham/bothich/*{id}|}" th:method="delete" >																	
+									<button type="submit" class="btn-local">
+								<i class='bx bxs-heart' style='color:#ece7e7' ></i></button>
+								</form>
+							</th:block>
+					</div>
+							<!-- heart -->
+						<div class="shp-shp-icon">
+							<th:block th:unless="${coko}" >
+						<!-- 		<i  class="fa-solid fa-heart"></i> -->
+								<button th:attr="ng-click=@{|favorite.add(*{id})|}" class="btn-local">
+								<i class='bx bx-heart' style='color:#ece7e7' ></i></button>
+							</th:block>
+							<!--end heart -->
+							</div>
+						</th:block>
+						
+					</div>
+					</div>
+				</div>
+
+
+<!-- Chinh anh chi tiet -->		
+				
+ <!-- Swiper -->
+    <div class="chi-tietchinh">
+      <div
+        style="
+          --swiper-navigation-color: #fff;
+          --swiper-pagination-color: #fff;
+        "
+        class="swiper mySwiper12"
+        id="chi-tietlocal"
+      >
+        <div class="swiper-wrapper">
+          <div class="swiper-slide swiperContriner" >
+            <img class="img-chitiet" th:src="@{|../../../assert/productimg/*{image}|}" onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'" />
+          </div>
+          <div class="swiper-slide swiperContriner" >
+            <img class="img-chitiet" th:src="@{|../../../assert/productimg/*{image1}|}" onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'" />
+          </div>
+          <div class="swiper-slide swiperContriner" >
+            <img class="img-chitiet" th:src="@{|../../../assert/productimg/*{image2}|}" onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'" />
+          </div>
+          <div class="swiper-slide swiperContriner" >
+            <img class="img-chitiet" th:src="@{|../../../assert/productimg/*{image3}|}" onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'" />
+          </div>
+
+          
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+      <div thumbsSlider="" class="swiper mySwiper10">
+        <div class="swiper-wrapper" >
+          <div class="swiper-slide swiperContriner" >
+            <img class="img-chitiet" th:src="@{|../../../assert/productimg/*{image}|}" onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'" />
+          </div>
+          <div class="swiper-slide swiperContriner" >
+            <img class="img-chitiet" th:src="@{|../../../assert/productimg/*{image1}|}" onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'" />
+          </div>
+          <div class="swiper-slide swiperContriner" >
+            <img class="img-chitiet" th:src="@{|../../../assert/productimg/*{image2}|}" onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'" />
+          </div>
+          <div class="swiper-slide swiperContriner" >
+            <img class="img-chitiet" th:src="@{|../../../assert/productimg/*{image3}|}" onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'" /> 
+          </div>
+         
+        </div>
+      </div>
+    </div>
+<!-- Chinh anh chi tiet END -->
+				
+				
+				
+				<!-- <img class="img-chitiet"
+					th:src="@{|../../../assert/productimg/*{image}|}"
+					onerror="this.onerror=null; this.src='../../../assert/productimg/noimg.jpg'" />
+					
+					 -->
+					
+				<!-- <img src="https://i.ibb.co/37Y74kv/showcase.jpg" alt="" /> -->
+				<br> <br> <br> <br> <br>
+			</div>
+
+			<!--  -->
+
+			<div class="comment-logic">
+				<div class="comment-skyle-img">
+					<div class="form-control" id="username">[[${#request.remoteUser}]]</div>
+					<div class="form-control" id="productid" th:text="${masp}"></div>
+					<img
+						src="https://i.pinimg.com/564x/ac/2e/fa/ac2efa286d280be353bbb46c27275426.jpg"
+						alt=""> <input ng-model="productreview.review"
+						class="comment-viet" type="text" placeholder="Viết bình luận...">
+				</div>
+				<div class="binhluan-huy">
+					<button ng-click="productreview.reset()" class="huy">Hủy</button>
+					<button ng-click="productreview.create()" class="binh-luan">Bình
+						luận</button>
+				</div>
+			</div>
+			<div class="username">
+				<div class="container mt-5" id="container-pro">
+					<div class="d-flex justify-content-center row">
+						<div class="col-md-8" th:each="p : ${pdreviews}">
+							<div class="d-flex flex-column comment-section">
+								<div class="bg-white p-2">
+									<div class="d-flex flex-row user-info">
+										<img class="rounded-circle"
+											src="https://i.pinimg.com/564x/ac/2e/fa/ac2efa286d280be353bbb46c27275426.jpg"
+											width="40">
+										<div class="d-flex flex-column justify-content-start ml-2"
+											id="xarachut">
+											<span class="d-block font-weight-bold name"
+												th:utext="${p.account.username}"></span><br> <span
+												class="date text-black-50" th:utext="${p.createDate}"></span>
+										</div>
+									</div>
+									<div class="mt-2">
+										<p class="comment-text" th:utext="${p.review}"></p>
+									</div>
+								</div>
+								<div class="bg-white">
+									<div class="d-flex flex-row fs-12" id="xalainhau">
+										<div class="like p-2 cursor">
+											<i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span>
+										</div>
+										<div class="like p-2 cursor">
+											<i class="fa fa-commenting-o"></i><span class="ml-1">Comment</span>
+										</div>
+										<div class="like p-2 cursor">
+											<i class="fa fa-share"></i><span class="ml-1">Share</span>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

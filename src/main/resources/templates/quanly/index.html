@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Trang Chủ</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  
+  <!-- Chart Js --> 
+  <link href="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js">
+  
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../../../assert/bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../../assert/bootstrap/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../../assert/bootstrap/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../../assert/bootstrap/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="../../../assert/bootstrap/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="../../../assert/bootstrap/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../../../assert/bootstrap/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../../../assert/bootstrap/css/style.css" rel="stylesheet">
+  
+<!-- ================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+</head>
+
+<body ng-app="admin-app">
+
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="/" class="logo d-flex align-items-center">
+        <span class="d-none d-lg-block">CITYZEN</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+  
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown">
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="https://i.pinimg.com/564x/1d/56/6e/1d566ea3ad4540177690384243647abc.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2" id="empl" th:text="${#request.userPrincipal.principal.username}"></span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>City Zen</h6>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+   <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed "  href="#!thongke">
+          <i class="bi bi-grid"></i>
+          <span>Thống Kê</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed"   href="#!sanpham">
+          <i class="bi bi-archive"></i>
+          <span>Sản Phẩm</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#!nhanvien">
+          <i class="bi bi-person"></i>
+          <span>Nhân Viên</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#!donhang">
+          <i class="bi bi-basket"></i>
+          <span>Đơn Hàng</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#!tintuc">
+          <i class="bi bi-newspaper"></i>
+          <span>Tin Tức</span>
+        </a>
+      </li><!-- End Error 404 Page Nav -->
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed "  href="#!hoatdong">
+          <i class="bi bi-grid"></i>
+          <span>Lịch Sử Hoạt Động</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/baomat/logoff">
+          <i class="bi bi-box-arrow-left"></i>
+          <span>Sign Out</span>
+        </a>
+      </li><!-- End Login Page Nav -->
+    </ul>
+
+  </aside><!-- End Sidebar-->
+	
+	
+	
+	
+	
+	<main>
+		<div ng-view>
+		
+		</div>
+	</main>
+	
+	<!-- Vendor JS Files -->
+ 	<script src="../../../assert/bootstrap/vendor/apexcharts/apexcharts.min.js"></script>
+ 	<script src="../../../assert/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+ 	<script src="../../../assert/bootstrap/vendor/chart.js/chart.min.js"></script>
+ 	<script src="../../../assert/bootstrap/vendor/echarts/echarts.min.js"></script>
+ 	<script src="../../../assert/bootstrap/vendor/quill/quill.min.js"></script>
+ 	<script src="../../../assert/bootstrap/vendor/simple-datatables/simple-datatables.js"></script>
+ 	<script src="../../../assert/bootstrap/vendor/tinymce/tinymce.min.js"></script>
+ 	<script src="../../../assert/bootstrap/vendor/php-email-form/validate.js"></script>
+   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <script src="https://kit.fontawesome.com/7a0e6819c2.js" crossorigin="anonymous"></script>
+ 	<!-- Template Main JS File -->
+ 	<script src="../../../assert/bootstrap/js/main.js"></script>
+ 
+	<!-- =========================================================================== -->
+	
+	<script src="../../assert/js/quanly.js"></script>
+  <script src="../../assert/js/sweetalert2.min"></script>
+	<script src="../../assert/quanly/sanpham/sanpham.js"></script>
+	<script src="../../assert/quanly/nhanvien/nhanvien.js"></script>
+	<script src="../../assert/quanly/tintuc/tintuc.js"></script>
+	<script src="../../assert/quanly/donhang/donhang.js"></script>
+	<script src="../../assert/quanly/thongke/thongke.js"></script>
+	<script src="../../assert/quanly/hoatdong/hoatdong.js"></script>
+	
+
+ 
+</body>
+</html>

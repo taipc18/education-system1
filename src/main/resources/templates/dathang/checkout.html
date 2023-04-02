@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index::dynamic(~{::main})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <main class="checkout">
+    	<form th:action="@{/test/checkout}" method="post">
+    	<div th:replace="~{/giohang/view::shopping_cart}"></div>
+         <!-- <div>
+        	<div>ORDER PURCHASING</div>
+        	<div>
+        		<div class="row">
+        			<div>
+        				<div>Purchaser</div>
+        				<div class="form-control" id="username">[[${#request.remoteUser}]]</div>
+        			</div>
+        			<div>
+        				<div>Order Date</div>
+        				<div class="form-control">{{order.createDate | date:'dd-MM-yyyy'}}</div>
+        			</div>
+        		</div>
+        		<div>
+        			<div>
+        				<div>Shipping address</div>
+        				<textarea ng-model="order.address" class="form-control"></textarea>
+        			</div>
+        		</div>
+        	</div>
+        	<div>
+        		<button ng-click="order.purchase()">Purchase</button>
+        	</div>
+        </div> -->
+        <br><br>
+        <div class="chieudai-checkbox">
+        <div class="checkpro" >
+        <div class="right-bar" >
+				<p><span >Username:<span id="username" class="username-100"> [[${#request.remoteUser}]]</span></span></p>
+				<hr>
+				<p><span>Create Date:<span> {{order.createDate | date:'dd/MM/yyyy'}}</span></span></p>
+				<input name="currentDate" ng-value="{{order.createDate}}" style="display:none">
+				
+				<hr>
+				<p><span>Address:<textarea class="checkbox-textara" ng-model="order.address" id="address" name="Address" rows="4" cols="30"></textarea></span></p>
+				<hr>
+				<div class="checkout-btn100">
+					<button type="submit" class="btn-btndathang1">Credit Pay</button>
+				<a class="btn-btndathang" ng-click="order.purchase()" id="bnt-hhcheckout">
+					<i class="fa fa-shopping-cart"></i>Checkout</a>
+				</div>
+			</div> 
+			</div> 
+			</div>
+			
+		
+		</form>
+			
+			
+    </main>
+</body>
+</html>

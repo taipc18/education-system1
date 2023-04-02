@@ -1,0 +1,59 @@
+<main id="main" class="main">
+	<!-- Top Selling -->
+	<div class="col-12">
+		<div class="card top-selling overflow-auto">
+			<div class="card-body pb-0">
+				<h5 class="card-title">Tin Tức</h5>
+				<div class="row">
+					<div class="form-group col-sm-2"></div>
+
+					<div class="form-group col-sm-6">
+						<input type="text" name="search" class="form-control"
+							ng-model="searchNews.$" placeholder="search">
+					</div>
+					<div class="form-group col-sm-2"></div>
+					<div class="form-group col-sm-1">
+						<button type="button" ng-click="reset()" class="btn btn-success"
+							data-toggle="modal" data-target="#exampleModal2">
+							<i class="fas fa-plus"></i>
+						</button>
+					</div>
+				</div>
+				<table class="table table-borderless" style="table-layout: fixed;">
+					<thead>
+						<tr>
+							<th scope="col">ID</th>
+							<th scope="col">Name</th>
+							<th scope="col">Description</th>
+							<th scope="col">Create Date</th>
+							<th scope="col">Writer</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="itemNews in pager.newss | filter:searchNews">
+							<td class="text-truncate">{{itemNews.id}}</td>
+							<td class="text-truncate">{{itemNews.name}}</td>
+							<td class="text-truncate">{{itemNews.description}}</td>
+							<td class="text-truncate">{{itemNews.createDate}}</td>
+							<td class="text-truncate">{{itemNews.writer}}</td>
+							<td>
+								<button type="button" ng-click="edit(itemNews)"
+									class="btn btn-primary" data-toggle="modal"
+									data-target="#exampleModal">Edit</button>
+								<button type="button" ng-click="delete(itemNews)"
+									class="btn btn-danger" data-toggle="modal">Del</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="card-footer text-center">
+					<button ng-click="pager.prev()" class="btn btn-primary"><</button>
+					<button ng-click="pager.next()" class="btn btn-primary">></button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- End Top Selling -->
+</main>
+<!-- End #main -->
